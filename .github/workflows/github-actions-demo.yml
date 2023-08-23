@@ -22,4 +22,4 @@ jobs:
       run: npm install
 
     - name: Executar script Node.js
-      run: node acessar_pagina.js
+      run: echo 'oi'
