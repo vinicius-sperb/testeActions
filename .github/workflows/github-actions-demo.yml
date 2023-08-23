@@ -3,7 +3,7 @@ name: Acessar Página Web
 on:
   push:
     branches:
-      - vinicius  # Ou a branch que você preferir
+      - main  # Ou a branch que você preferir
 
 jobs:
   access-page:
