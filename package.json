@@ -3,5 +3,23 @@
     "axios": "^1.4.0",
     "node-fetch": "^3.3.2",
     "octokit": "^3.1.0"
-  }
+  },
+  "name": "testeactions",
+  "version": "1.0.0",
+  "main": "acessar_paginas.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinicius-sperb/testeActions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinicius-sperb/testeActions/issues"
+  },
+  "homepage": "https://github.com/vinicius-sperb/testeActions#readme",
+  "description": ""
 }
