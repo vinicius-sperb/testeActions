@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const token = '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';
+const token = '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';
 
 const owner = 'vinicius-sperb';
 const repo = 'testeActions';
