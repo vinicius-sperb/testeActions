@@ -1,26 +1,30 @@
-name: Acessar Página Web
-
 on:
-  push:
-    branches:
-      - vinicius  # Ou a branch que você preferir
-
+  workflow_dispatch:
 jobs:
-  access-page:
+  use_api_via_script:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout do repositório
-      uses: actions/checkout@v2
-      
-    - name: Configurar Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'  # Escolha a versão do Node.js que deseja usar
+      - name: Check out repo content
+        uses: actions/checkout@v3
 
-    - name: Instalar dependências
-      run: npm install
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.17.0'
+          cache: npm
 
-    - name: Executar script Node.js
-      run: node acessar_paginas.js
-      
+      - name: Install dependencies
+        run: npm install octokit
+
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@c2055a00597a80f713b78b1650e8d3418f4d9a65
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PEM }}
+
+      - name: Run script
+        run: |
+          node acessar_paginas.js
+        env:
+          TOKEN: ${{ steps.generate_token.outputs.token }}
