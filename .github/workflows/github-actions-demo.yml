@@ -17,4 +17,4 @@ jobs:
       run: npm install
 
     - name: Executar script Node.js
-      run: echo 'oi'
+      run: node teste2.js
