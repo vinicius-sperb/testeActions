@@ -1,13 +1,13 @@
 const axios = require('axios');
 
 // Defina o token de acesso pessoal (gerado no GitHub)
-const token = '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';
+const token = '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';
 
 // Defina as informações do repositório e do fluxo de trabalho
 const owner = 'vinicius-sperb';
 const repo = 'testeActions';
 const workflow = 'github-actions-demo.yml';
-const ref = 'vinicius';
+const ref = 'main';
 
 // Defina quaisquer parâmetros opcionais que o fluxo de trabalho possa requerer
 const inputs = {
@@ -26,7 +26,6 @@ const headers = {
 // Corpo da requisição
 const data = {
   ref,
-  inputs,
 };
 
 // Faça a requisição POST para iniciar o fluxo de trabalho manualmente
