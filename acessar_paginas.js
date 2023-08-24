@@ -1,21 +1,39 @@
-import { Octokit } from "octokit"
+const axios = require('axios');
 
-const octokit = new Octokit({
-  auth: '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'
-});
+// Defina o token de acesso pessoal (gerado no GitHub)
+const token = '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';
 
-try {
-  const result = await octokit.request("GET /repos/{owner}/{repo}/issues", {
-      owner: "octocat",
-      repo: "Spoon-Knife",
-    });
+// Defina as informações do repositório e do fluxo de trabalho
+const owner = 'vinicius-sperb';
+const repo = 'testeActions';
+const workflow = 'github-actions-demo.yml';
+const ref = 'vinicius';
 
-    const titleAndAuthor = result.data.map(issue => ({
-        title: issue.title,
-        authorID: issue.user.id
-      }));
-  console.log(titleAndAuthor)
+// Defina quaisquer parâmetros opcionais que o fluxo de trabalho possa requerer
+const inputs = {
+  parametro: 'valor',
+};
 
-} catch (error) {
-  console.log(`Error! Status: ${error.status}. Message: ${error.response.data.message}`)
-}
+// Construa a URL da API para iniciar o fluxo de trabalho manualmente
+const url = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/${workflow}/dispatches`;
+
+// Crie o cabeçalho da requisição com o token de acesso
+const headers = {
+  Authorization: `Bearer ${token}`,
+  Accept: 'application/vnd.github.v3+json',
+};
+
+// Corpo da requisição
+const data = {
+  ref,
+  inputs,
+};
+
+// Faça a requisição POST para iniciar o fluxo de trabalho manualmente
+axios.post(url, data, { headers })
+  .then(response => {
+    console.log('Fluxo de trabalho iniciado com sucesso!', response.data);
+  })
+  .catch(error => {
+    console.error('Erro ao iniciar o fluxo de trabalho:', error.response.data);
+  });
