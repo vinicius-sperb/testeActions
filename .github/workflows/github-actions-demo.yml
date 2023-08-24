@@ -17,4 +17,4 @@ jobs:
       run: npm install
 
     - name: Executar script Node.js
-      run: node teste2.js
+      run: node pages/teste2.js
