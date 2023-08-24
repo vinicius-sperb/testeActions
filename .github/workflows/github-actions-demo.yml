@@ -18,7 +18,7 @@ jobs:
 
       - name: Generate token
         id: generate_token
-        uses: tibdex/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
+        uses: tibdex/github-app-token@c2055a00597a80f713b78b1650e8d3418f4d9a65
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PEM }}
